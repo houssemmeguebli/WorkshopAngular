@@ -1,0 +1,28 @@
+<p>residence works!</p>
+
+
+<ul *ngFor="let r of listResidences ">
+
+    <li>
+        {{r.id}} {{r.name}}{{r.address}}
+        <button (click)="showApp(r.id)">show App</button>
+    </li>
+</ul>
+
+<ng-container *ngIf=" listFiltre?.length!=0 ">
+    <table>
+        <tr>
+            <th>AppartNum</th>
+            <th>Surface</th>
+            <th>Category</th>
+        </tr>
+        <tr *ngFor=" let a of listFiltre ">
+            <td>{{a.appartNum}}</td>
+            <td>{{a.surface}}</td>
+            <td>{{a.category}}</td>
+        </tr>
+    </table>
+</ng-container>
+<div *ngIf="listFiltre.length==0 ">
+    No Appartements
+</div>

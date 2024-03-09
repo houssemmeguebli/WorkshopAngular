@@ -1,0 +1,38 @@
+<p>FormControl!</p>
+
+
+<label>login</label>
+<input type="text" [formControl]="login">
+
+
+
+<label>password</label>
+<input type="text" [formControl]="pwd">
+
+<input type="submit" value="save" (click)="save()" [disabled]="login.invalid || pwd.invalid">
+
+
+<p>FormGroup!</p>
+
+
+
+<form [formGroup]="registerForm">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Login</label>
+        <input type="email" class="form-control" id="login" formControlName="login" aria-describedby="emailHelp" placeholder="Enter login">
+    </div>
+    <div class="alert alert-danger" *ngIf="this.registerForm.controls['login'].invalid  &&this.registerForm.controls['login'].touched">
+        <p *ngIf="this.registerForm.get('login')?.hasError('required')">login required</p>
+        <p *ngIf="this.registerForm.controls['login'].hasError('minlength')">login minLength 6</p>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="text" class="form-control" formControlName="pwd" placeholder="Password">
+    </div>
+    <div class="alert alert-danger" *ngIf="this.registerForm.get('pwd')?.invalid && this.registerForm.controls['pwd'].touched">
+        <p *ngIf="this.registerForm.controls['pwd'].hasError('required')">password required</p>
+        <p *ngIf="this.registerForm.controls['pwd'].hasError('pattern')">password pattern</p>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid" (click)="save()">Submit</button>
+    <button type="submit" class="btn btn-primary" (click)=" reset() ">reset</button>
+</form>

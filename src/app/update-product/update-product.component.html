@@ -1,0 +1,47 @@
+<form [formGroup]="registerForm">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Id</label>
+        <input type="number" class="form-control" id="id" formControlName="id" placeholder="Enter id">
+    </div>
+    <div class="alert alert-danger" *ngIf="this.registerForm.controls['id'].invalid  &&this.registerForm.controls['id'].touched">
+        <p *ngIf="this.registerForm.get('id')?.hasError('required')">id required</p>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">title</label>
+        <input type="text" class="form-control" formControlName="title" placeholder="title">
+    </div>
+    <div class="alert alert-danger" *ngIf="this.registerForm.get('title')?.invalid && this.registerForm.controls['title'].touched">
+        <p *ngIf="this.registerForm.controls['title'].hasError('required')">title required</p>
+        <p *ngIf="this.registerForm.controls['title'].hasError('minlength')">title min Length 6 </p>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">price</label>
+        <input type="number" class="form-control" formControlName="price" placeholder="price">
+    </div>
+    <div class="alert alert-danger" *ngIf="this.registerForm.get('price')?.invalid && this.registerForm.controls['price'].touched">
+        <p *ngIf="this.registerForm.controls['price'].hasError('required')">price required</p>
+        <p *ngIf="this.registerForm.controls['price'].hasError('min')">price price doit etre positif</p>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">quantity</label>
+        <input type="number" class="form-control" formControlName="quantity" placeholder="quantity">
+    </div>
+    <div class="alert alert-danger" *ngIf="this.registerForm.get('quantity')?.invalid && this.registerForm.controls['quantity'].touched">
+        <p *ngIf="this.registerForm.controls['quantity'].hasError('required')">quantity required</p>
+        <p *ngIf="this.registerForm.controls['quantity'].hasError('min')">quantity doit etre positif</p>
+    </div>
+
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Like</label>
+        <input type="number" class="form-control" formControlName="like" placeholder="like">
+    </div>
+    <div class="alert alert-danger" *ngIf="this.registerForm.get('like')?.invalid && this.registerForm.controls['like'].touched">
+        <p *ngIf="this.registerForm.controls['like'].hasError('required')">like required</p>
+        <p *ngIf="this.registerForm.controls['like'].hasError('min')">like doit etre positif</p>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid" (click)="save()">Submit</button>
+</form>
