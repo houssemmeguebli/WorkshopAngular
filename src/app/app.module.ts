@@ -1,40 +1,51 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';  // <-- Import HttpClientModule here
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './header/header.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductComponent } from './product/product.component';
-import { ResidenceComponent } from './residence/residence.component';
+import { ResidencesComponentComponent } from './residences-component/residences-component.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { DetailProductComponent } from './detail-product/detail-product.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 import { FormComponent } from './form/form.component';
-import { AddProductComponent } from './add-product/add-product.component';
-import {HttpClientModule} from '@angular/common/http';
-import { UpdateProductComponent } from './update-product/update-product.component'
+
+// Angular modules
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+// Material modules
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+
+// Animations module
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {UniversityListComponent} from "./university-list/university-list.component";
+import {MatDialogModule} from "@angular/material/dialog";
+import {CommonModule} from "@angular/common";
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    HeaderComponent,
     ProductComponent,
-    ResidenceComponent,
+    ResidencesComponentComponent,
     NavbarComponent,
-    NotFoundComponent,
-    DetailProductComponent,
-    FormComponent,
-    AddProductComponent,
-    UpdateProductComponent
+    NotfoundComponent,
+    FormComponent// <-- Add the component to the declarations array
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    MatTableModule,
+    MatButtonModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    UniversityListComponent,
+    MatDialogModule,
+    CommonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

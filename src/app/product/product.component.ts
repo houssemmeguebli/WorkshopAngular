@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { Product } from '../model/product';
-import { ProductSService } from '../services/product-s.service';
-import { ConsumerProductService } from '../services/consumer-product.service';
+import { Product } from '../models/product';
 
 @Component({
   selector: 'app-product',
@@ -9,33 +7,17 @@ import { ConsumerProductService } from '../services/consumer-product.service';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent {
-  priceMax!:number;
-  listProduct:Product[]=[]
-
-  //Injection du service
-  constructor(private ps:ProductSService,private consp:ConsumerProductService){}
-
-  //Remplire listProduct avec la liste du service
-  ngOnInit(){
-   // this.listProduct=this.ps.listProduct
-    this.consp.getProduct().subscribe({
-      next:(data)=>this.listProduct=data,
-      error:(error)=> console.log(error),
-      complete:()=>console.log('done')
-    }
-    )
-  }
-
+  priceMax!: number;
+  like: number=0;
+  listProduct:Product[]=[
+    {id:1,title:"product1",price:100,quantity:5,like:0},
+    {id:2,title:"product2",price:5,quantity:5,like:0},
+    {id:3,title:"product3",price:50,quantity:2,like:0}
+  ]
   increment(id:number){
-    this.listProduct[id].like++;
+    this.listProduct[id].like ++;
   }
-  buy(i:number){
-    this.listProduct[i].quantity--;
-
-  }
-  supp(id:number){
-    this.consp.DeleteProduct(id).subscribe(
-      ()=>this.ngOnInit()
-    )
+  incrementquantity(id:number){
+    this.listProduct[id].quantity --;
   }
 }

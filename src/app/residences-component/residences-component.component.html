@@ -1,0 +1,44 @@
+<p>core works!</p>
+<table border="1">
+  <tr>
+    <th>id</th>
+    <th>name</th>
+    <th>address</th>
+    <th>image</th>
+
+  </tr>
+  <tr *ngFor = "let residence of listResidences "> <!-- let pour un varibale locale et var pour globale -->
+      <td>{{residence.id}}</td>
+      <td>{{residence.name}}</td>
+      <td>{{residence.address}}</td>
+      <td>{{residence.image}}</td>
+    <button (click)="showAppartments(residence)" > Show App</button>
+  </tr>
+</table>
+<tr *ngIf="selectedResidenceApartments.length > 0">
+  <h1>Apartments:</h1>
+  <table border="1">
+  <tr>
+    
+    <th>appartNum</th>
+    <th>floorNum</th>
+    <th>Surface</th>
+    <th>terrace</th>
+    <th>SurfaceTerrace</th>
+    <th>category</th>
+    <th>description</th>
+
+
+  </tr>
+  <tr *ngFor="let apartment of selectedResidenceApartments">
+
+    <td>{{apartment.appartNum}}</td>
+    <td>{{apartment.floorNum}}</td>
+    <td>{{apartment.surface}}</td>
+    <td>{{apartment.terrace}}</td>
+    <td>{{apartment.surfaceTerrace}}</td>
+    <td>{{apartment.category}}</td>
+    <td>{{apartment.description}}</td>
+  </tr>
+  </table>
+</tr>

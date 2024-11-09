@@ -1,0 +1,30 @@
+<div class="university-table" style="margin: 5%;">
+  <!-- Message if no universities are available -->
+  <p *ngIf="!universities.length">No universities available.</p>
+
+  <!-- Bootstrap table for universities -->
+  <table class="table table-bordered table-striped" *ngIf="universities.length" >
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let university of universities">
+      <td>{{ university.idUniversite }}</td>
+      <td>{{ university.nomUniversite }}</td>
+      <td>{{ university.adresse }}</td>
+      <td>
+        <button class="btn btn-primary" (click)="viewDetails(university)">View</button>
+        <button class="btn btn-danger" (click)="deleteUniversity(university.idUniversite)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- Message if no universities are available -->
+  <p *ngIf="!universities.length">No universities available.</p>
+</div>
